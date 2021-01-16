@@ -9,7 +9,9 @@
 </head>
 <body>
     <h2>Страница сотрудника</h2>
+    @if(@Model != null)
     <ul>
+    {
         <li>Номер: @Model.Id</li>
         <li>Фамилия: @Model.LastName</li>
         <li>Имя: @Model.FirstName</li>
@@ -18,7 +20,9 @@
         <li>Возраст: @Model.Age год(лет)</li>
         <li>Зарплата: @Model.Salary рублей</li>
         <li>Рабочий стаж: @Model.WorkExperience год(лет)</li>
+    }
     </ul>
+    @else <h3>not found</h3>
     <hr />
     <a href="~/Home/Employees">Все сотрудники</a>
     <a href="~/">Домой</a>
