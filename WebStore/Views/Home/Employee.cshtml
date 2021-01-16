@@ -1,0 +1,26 @@
+﻿@model WebStore.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Страница сотрудника</title>
+</head>
+<body>
+    <h2>Страница сотрудника</h2>
+    <ul>
+        <li>Номер: @Model.Id</li>
+        <li>Фамилия: @Model.LastName</li>
+        <li>Имя: @Model.FirstName</li>
+        <li>Отчество: @Model.Patronymic</li>
+        <li>Должность: @Model.Job</li>
+        <li>Возраст: @Model.Age год(лет)</li>
+        <li>Зарплата: @Model.Salary рублей</li>
+        <li>Рабочий стаж: @Model.WorkExperience год(лет)</li>
+    </ul>
+    <hr />
+    <a href="~/Home/Employees">Все сотрудники</a>
+    <a href="~/">Домой</a>
+</body>
+</html>

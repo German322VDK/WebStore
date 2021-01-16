@@ -15,7 +15,13 @@ namespace WebStore.Models
 
         public string Patronymic { get; set; }
 
+        public string Job { get; set; }
+
         public int Age { get; set; }
 
-    }
+        public int Salary { get; set; }
+
+        public int WorkExperience { get; set; }
+
+}
 }

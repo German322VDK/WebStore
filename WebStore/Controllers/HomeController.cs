@@ -11,17 +11,22 @@ namespace WebStore.Controllers
     {
         public static readonly List<Employee> employees = new()
         {
-            new Employee { Id=1, LastName = "Петров", FirstName = "Иван", Patronymic = "Александрович",  Age = 40},
-            new Employee { Id = 2, LastName = "Иванов", FirstName = "Александр", Patronymic = "Петрович", Age = 35 },
-            new Employee { Id = 3, LastName = "Александров", FirstName = "Пётр", Patronymic = "Иванович", Age = 45 }
+            new Employee { Id=1, LastName = "Петров", FirstName = "Иван", Patronymic = "Александрович", 
+                Job = "Директор",  Age = 40, Salary = 140000, WorkExperience=10},
+            new Employee { Id = 2, LastName = "Иванов", FirstName = "Александр", Patronymic = "Петрович",
+                Job = "Старший программист", Age = 35, Salary = 80000, WorkExperience=5 },
+            new Employee { Id = 3, LastName = "Александров", FirstName = "Пётр", Patronymic = "Иванович",
+                Job = "Веб-дизайнер", Age = 45, Salary = 70000, WorkExperience = 7}
         };
 
         public IActionResult Index() => View();
 
-
         public IActionResult SecondAction() => View("SecondView");
 
         public IActionResult Employees() => View(employees);
+
+        //public IActionResult Employee(int i) => View(employees[i]);
+        
 
     }
 }
