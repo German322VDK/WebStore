@@ -25,8 +25,10 @@ namespace WebStore.Controllers
 
         public IActionResult Employees() => View(employees);
 
-        //public IActionResult Employee(int i) => View(employees[i]);
-        
-
+        public IActionResult Employee(int i)
+        {
+            var result = employees.Find(emp => emp.Id == i);
+            return View(result);
+        }       
     }
 }
