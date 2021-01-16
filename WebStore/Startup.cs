@@ -37,6 +37,14 @@ namespace WebStore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/greetings/", async context =>
+                {
+                    await context.Response.WriteAsync("Greetings!!!");
+                });
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync(Configuration["Greetings"]);
