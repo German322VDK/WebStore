@@ -29,9 +29,10 @@
                     <td>@employee.FirstName</td>
                     <td>@employee.Patronymic</td>
                     <td>@employee.Job</td>
-                    @*<td><a asp-controller="Home" asp-action="Employee" asp-route-id="@employee.Id">Детали</a></td>*@
-                    <td><a href="/Home/Employee/@employee.Id/">Детали</a></td>
-                    @*<td>@Html.ActionLink("Детали", "Employee", new { id = employee.Id })</td>*@
+                    @*<td><a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id">Детали</a></td>*@
+                    @*<td><a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id"> Детали </a></td>*@
+                    @*<td><a href="/Home/Employee/@employee.Id/">Детали</a></td>*@
+                    <td>@Html.ActionLink("Детали", "Employee", new { id = employee.Id })</td>
                 </tr>
             }
         </tbody>   
