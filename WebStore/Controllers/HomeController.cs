@@ -27,7 +27,8 @@ namespace WebStore.Controllers
 
         public IActionResult Employee(int i)
         {
-            var result = employees.Find(emp => emp.Id == i);
+            Employee result = employees.Find(emp => emp.Id == i);
+            if (result is null) return NotFound();
             return View(result);
         }
 
