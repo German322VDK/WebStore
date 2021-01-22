@@ -25,5 +25,7 @@ namespace WebStore.Controllers
         public IActionResult Blog() => View();
 
         public IActionResult Blog_single() => View();
+
+        public IActionResult Shop() => View();
     }
 }
