@@ -12,8 +12,8 @@ namespace WebStore.Controllers
         
         public IActionResult Index() => View();
 
-        
+        public IActionResult Error() => View();
 
-
+        public IActionResult Contact_us() => View();
     }
 }
