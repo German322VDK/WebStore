@@ -9,29 +9,25 @@ namespace WebStore.Controllers
 {
     public class HomeController : Controller
     {
-        public static readonly List<Employee> employees = new()
-        {
-            new Employee { Id=1, LastName = "Петров", FirstName = "Иван", Patronymic = "Александрович", 
-                Job = "Директор",  Age = 40, Salary = 140000, WorkExperience=10},
-            new Employee { Id = 2, LastName = "Иванов", FirstName = "Александр", Patronymic = "Петрович",
-                Job = "Старший программист", Age = 35, Salary = 80000, WorkExperience=5 },
-            new Employee { Id = 3, LastName = "Александров", FirstName = "Пётр", Patronymic = "Иванович",
-                Job = "Веб-дизайнер", Age = 45, Salary = 70000, WorkExperience = 7}
-        };
-
+        
         public IActionResult Index() => View();
 
-        public IActionResult SecondAction() => View("SecondView");
+        public IActionResult Error() => View();
 
-        public IActionResult Employees() => View(employees);
+        public IActionResult Contact_us() => View();
 
-        public IActionResult Employee(int i)
-        {
-            Employee result = employees.Find(emp => emp.Id == i);
-            if (result is null) return NotFound();
-            return View(result);
-        }
+        public IActionResult Login() => View();
 
+        public IActionResult Checkout() => View();
 
+        public IActionResult Cart() => View();
+
+        public IActionResult Blog() => View();
+
+        public IActionResult Blog_single() => View();
+
+        public IActionResult Shop() => View(); 
+
+        public IActionResult Product_details() => View();
     }
 }
