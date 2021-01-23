@@ -3,6 +3,11 @@
 @{ Layout = "_LayoutEmployees"; }
 
 <h3>Сотрудники</h3>
+
+<div >
+    <a asp-action="Create" class="btn btn-default add-to-cart">Создать сотрудника</a>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -26,11 +31,15 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@employee.Id">
                         <i class="fa fa-info-circle"></i>
-                    </a>|<a asp-action="Edit" asp-route-id="@employee.Id">
+                    </a>|
+                    <a asp-action="Edit" asp-route-id="@employee.Id">
                         <i class="fa fa-edit"></i>
-                    </a>|<a asp-action="Delete" asp-route-id="@employee.Id" class="text-danger">
-                        <i class="fa fa-trash-o"></i>
-                    </a>
+                    </a>|
+                    <form asp-action="DeleteConfirmed" asp-route-id="@employee.Id" class="text-danger">
+                        <button type="submit">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
         }

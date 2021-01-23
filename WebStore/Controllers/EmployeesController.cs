@@ -29,6 +29,8 @@ namespace WebStore.Controllers
             return NotFound();
         }
 
+        public IActionResult Create() => View("Edit", new EmployeeViewModel());
+
         #region Edit
 
         public IActionResult Edit(int id)
