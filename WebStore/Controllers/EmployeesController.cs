@@ -37,7 +37,7 @@ namespace WebStore.Controllers
         {
             if (id <= 0) return BadRequest();
 
-            var employee = _IEmployeesData.Get((int)id);
+            var employee = _IEmployeesData.Get(id);
 
             if (employee is null)
                 return NotFound();
