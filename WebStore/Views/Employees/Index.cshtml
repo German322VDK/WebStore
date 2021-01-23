@@ -26,9 +26,9 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@employee.Id">
                         <i class="fa fa-info-circle"></i>
-                    </a>|<a href="#">
+                    </a>|<a asp-action="Edit" asp-route-id="@employee.Id">
                         <i class="fa fa-edit"></i>
-                    </a>|<a href="#" class="text-danger">
+                    </a>|<a asp-action="Delete" asp-route-id="@employee.Id" class="text-danger">
                         <i class="fa fa-trash-o"></i>
                     </a>
                 </td>
