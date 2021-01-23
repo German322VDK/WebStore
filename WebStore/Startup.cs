@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -13,16 +13,9 @@ namespace WebStore
 {
     public record Startup(IConfiguration Configuration)
     {
-        //private IConfiguration Configuration { get; }
-
-        //public Startup(IConfiguration Configuration)
-        //{
-        //    this.Configuration = Configuration;
-        //}
      
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
@@ -37,10 +30,10 @@ namespace WebStore
 
             app.UseRouting();
 
-            //var greetings = Configuration["Greetings"];
 
             app.UseEndpoints(endpoints =>
             {
+                // Проекция запроса на действия
                 endpoints.MapGet("/greetings/", async context =>
                 {
                     await context.Response.WriteAsync(Configuration["Greetings"]);
