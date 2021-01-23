@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebStore.Data;
+using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 
 namespace WebStore.Controllers
@@ -11,20 +12,17 @@ namespace WebStore.Controllers
     //[Route("staff")]
     public class EmployeesController : Controller
     {
-        private List<Employee> _Employees;
+        private readonly IEmployeesData _IEmployeesData;
 
-        public EmployeesController()
-        {
-            _Employees = TestData.Employees;
-        }
+        public EmployeesController(IEmployeesData IEmployeesData) => _IEmployeesData = IEmployeesData;
 
         //[Route("all")]
-        public IActionResult Index() => View(_Employees);
+        public IActionResult Index() => View(_IEmployeesData.Get());
 
         //[Route("info(id-{id})")]
         public IActionResult Details(int id) // http://localhost:5000/employees/details/2
         {
-            var employee = _Employees.FirstOrDefault(e => e.Id == id);
+            var employee = _IEmployeesData.Get(id);
             if (employee is not null)
                 return View(employee);
             return NotFound();
