@@ -17,6 +17,8 @@ namespace WebStore
         {
             services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
 
+            services.AddTransient<IProductData, InMemoryProductData>();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
