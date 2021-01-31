@@ -8,7 +8,8 @@ using Microsoft.Extensions.Hosting;
 using WebStore.Data;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Middleware;
-using WebStore.Infrastructure.Services;
+using WebStore.Infrastructure.Services.InMemory;
+using WebStore.Infrastructure.Services.InSQL;
 using WebStrore.DAL.Context;
 
 namespace WebStore
@@ -24,7 +25,8 @@ namespace WebStore
 
             services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
 
-            services.AddTransient<IProductData, InMemoryProductData>();
+            //services.AddTransient<IProductData, InMemoryProductData>();
+            services.AddTransient<IProductData, SqlProductData>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
