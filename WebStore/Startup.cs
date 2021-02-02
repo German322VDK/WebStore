@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -8,21 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Middleware;
+using WebStore.Infrastructure.Services;
 
 namespace WebStore
 {
     public record Startup(IConfiguration Configuration)
     {
-        //private IConfiguration Configuration { get; }
-
-        //public Startup(IConfiguration Configuration)
-        //{
-        //    this.Configuration = Configuration;
-        //}
      
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddMvc();
+            services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
@@ -31,16 +29,28 @@ namespace WebStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseBrowserLink();
             }
 
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            //var greetings = Configuration["Greetings"];
+            app.UseWelcomePage("/welcome");
+
+            app.UseMiddleware<TestMiddleware>();
+
+            app.MapWhen(
+                context => context.Request.Query.ContainsKey("id") && context.Request.Query["id"] == "5",
+                context => context.Run(async request => await request.Response.WriteAsync("Hello with id == 5!"))
+            );
+
+            app.Map("/hello", context => context.Run(async request => await request.Response.WriteAsync("Hello!!!")));
 
             app.UseEndpoints(endpoints =>
             {
+                // Проекция запроса на действия
                 endpoints.MapGet("/greetings/", async context =>
                 {
                     await context.Response.WriteAsync(Configuration["Greetings"]);
