@@ -33,6 +33,8 @@ namespace WebStore.Controllers
         {
             if (!ModelState.IsValid) return View(Model);
 
+            _Logger.LogInformation("Регистрация пользователя {0}", Model.UserName);
+
             var user = new User
             {
                 UserName = Model.UserName
@@ -42,10 +44,15 @@ namespace WebStore.Controllers
 
             if (registration_result.Succeeded)
             {
+                _Logger.LogInformation("Пользовател {0} успешно зарегестрирован", Model.UserName);
+
                 await _SignInManager.SignInAsync(user, false);
 
                 return RedirectToAction("Index", "Home");
             }
+
+            _Logger.LogWarning("В прроцессе регистрация пользователя {0} возникли ошибки :( {1}", 
+                Model.UserName, string.Join(",", registration_result.Errors.Select(e => e.Description)));
 
             foreach (var errors in registration_result.Errors)
             {

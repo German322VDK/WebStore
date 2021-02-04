@@ -43,7 +43,7 @@ namespace WebStore
 
                 opt.User.RequireUniqueEmail = false;
 
-                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_";
                 opt.Lockout.AllowedForNewUsers = false;
                 opt.Lockout.MaxFailedAccessAttempts = 10;
                 opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
