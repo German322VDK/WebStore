@@ -8,8 +8,8 @@ namespace WebStore.Domain.Entities
 {
     public class Cart
     {
-        public IEnumerable<CartItem> Items { get; set; } = new List<CartItem>();
+        public ICollection<CartItem> Items { get; set; } = new List<CartItem>();
 
-        public int ItemCount => Items?.Sum(item => item.Quentity) ?? 0;
+        public int ItemCount => Items?.Sum(item => item.Quantity) ?? 0;
     }
 }
