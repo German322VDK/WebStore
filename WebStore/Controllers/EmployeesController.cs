@@ -9,7 +9,12 @@ using WebStore.ViewModels;
 namespace WebStore.Controllers
 {
     //[Route("staff")]
-    [Authorize(Roles = Role.Administrator)]
+
+    /*[Authorize(Roles = Role.Administrator + "," + Role.Users)] - У меня получилось разрешить 
+    не сколько ролей только таким способом */
+
+    //[Authorize(Roles = Role.Administrator)]
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _IEmployeesData;
@@ -28,10 +33,11 @@ namespace WebStore.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Create() => View("Edit", new EmployeeViewModel());
 
         #region Edit
-
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Edit(int id)
         {
             if (id <= 0) return BadRequest();
@@ -55,6 +61,7 @@ namespace WebStore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Edit(EmployeeViewModel model)
         {
             if (model is null)
@@ -90,7 +97,7 @@ namespace WebStore.Controllers
         #endregion
 
         #region Delete
-
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -114,6 +121,7 @@ namespace WebStore.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult DeleteConfirmed(int id)
         {
             _IEmployeesData.Delete(id);
