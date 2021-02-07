@@ -4,10 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Middleware;
 using WebStore.Infrastructure.Services;
@@ -20,6 +16,8 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+
+            services.AddTransient<IProductData, InMemoryProductData>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
@@ -50,12 +48,6 @@ namespace WebStore
 
             app.UseEndpoints(endpoints =>
             {
-                // Проекция запроса на действия
-                endpoints.MapGet("/greetings/", async context =>
-                {
-                    await context.Response.WriteAsync(Configuration["Greetings"]);
-                });
-
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
