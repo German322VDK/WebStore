@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore", "WebStore\WebSto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Domain", "WebStore.Domain\WebStore.Domain.csproj", "{15196699-D2B7-4DBA-A2D1-42CD8B6CAA8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStrore.DAL", "WebStrore.DAL\WebStrore.DAL.csproj", "{793F89DE-8B86-44A0-9C1E-93F5B72B1020}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStrore.DAL", "WebStrore.DAL\WebStrore.DAL.csproj", "{793F89DE-8B86-44A0-9C1E-93F5B72B1020}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
