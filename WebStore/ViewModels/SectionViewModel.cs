@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebStore.ViewModels
 {
@@ -16,5 +14,9 @@ namespace WebStore.ViewModels
         public SectionViewModel Parent { get; init; }
 
         public List<SectionViewModel> ChildSections { get; } = new();
+
+        public int ProductsCount { get; set; }
+
+        public int TotalProductsCount => ProductsCount + ChildSections.Sum(c => c.TotalProductsCount);
     }
 }
