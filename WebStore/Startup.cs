@@ -70,6 +70,7 @@ namespace WebStore
             services.AddTransient<ICartService, InCookiesCartService>();
             //services.AddTransient<IProductData, InMemoryProductData>();
             services.AddTransient<IProductData, SqlProductData>();
+            services.AddTransient<IOrderService, SqlOrderService>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
