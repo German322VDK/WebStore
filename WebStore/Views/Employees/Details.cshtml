@@ -1,7 +1,8 @@
-﻿@model WebStore.Models.Employee
+﻿@using WebStore.Domain.Entities.Identity;
+@model WebStore.Models.Employee
 
 @{ Layout = "_LayoutEmployees";
-                ViewData["Title"] = $"Сотрудник id:{Model.Id}"; }
+    ViewData["Title"] = $"Сотрудник id:{Model.Id}"; }
 
 <h2>Страница сотрудника</h2>
 
@@ -33,5 +34,9 @@
 
 <hr />
 <a asp-action="Index" class="btn btn-default">К списку</a>
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактировать</a>
-<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
+@if (User.IsInRole(Role.Administrator))
+{
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактировать</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
+}
+
